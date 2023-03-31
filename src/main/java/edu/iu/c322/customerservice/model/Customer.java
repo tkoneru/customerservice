@@ -2,56 +2,61 @@ package edu.iu.c322.customerservice.model;
 
 import java.util.Objects;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotEmpty;
 
-public class Customer
+@Entity
+public class Customer 
 {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
     @NotEmpty(message = "name cannot be empty.")
     private String name;
 
     private String email;
 
-    public int getId()
+
+    public int getId() 
     {
         return this.id;
     }
 
-    public void setId(int id)
-    {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getName()
+    public String getName() 
     {
         return this.name;
     }
 
-    public void setName(String name)
+    public void setName(String name) 
     {
         this.name = name;
     }
 
-    public String getEmail()
+    public String getEmail() 
     {
         return this.email;
     }
 
-    public void setEmail(String email)
+    public void setEmail(String email) 
     {
         this.email = email;
     }
 
 
     @Override
-    public boolean equals(Object o)
+    public boolean equals(Object o) 
     {
         if (o == this)
-        {
             return true;
-        }
-
-        if (!(o instanceof Customer))
+        if (!(o instanceof Customer)) 
         {
             return false;
         }
@@ -63,5 +68,5 @@ public class Customer
     public int hashCode()
     {
         return Objects.hash(id, name, email);
-    }
+    }  
 }
